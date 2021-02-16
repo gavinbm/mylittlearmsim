@@ -12,7 +12,8 @@ def sim():
 		# if the user assembles their code
 		if "assemble" in request.form:
 			if request.form["assemble"] == "assemble":
-				fin = request.form["input"].splitlines()
+				oldcode = request.form["input"]
+				fin = oldcode.splitlines()
 				# Storing all labels and line numbers in input.txt
 				getLabels(fin)
 
@@ -69,7 +70,7 @@ def sim():
 				    # iteration
 				    i += 1
 				flash(Reg)
-				return render_template("home.html")
+				return render_template("home.html", oldcode=oldcode)
 		# reset the reg values and reload the page
 		elif request.form["reset"] == "reset":
 			for key in Reg:

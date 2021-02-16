@@ -13,7 +13,7 @@
 		{% endif %}
 	{% endwith %}
 	<form action="{{ url_for('sim') }}" method='post'>
-		<textarea cols="60" rows="30" name="input"></textarea>
+		<textarea cols="60" rows="30" name="input">{{ oldcode }}</textarea>
 		<input type="submit" name="assemble" value="assemble">
 		<input type="submit" name="reset" value="reset">
 	</form>
