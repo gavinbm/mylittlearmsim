@@ -1,20 +1,25 @@
 <html>
-	<title>
-		armsim
-	</title>
-	<h1>A amatuer programmer's attempt at an armv8 simulator</h1>
-	<h3>The first dict shows the original values, the second one shows the values after running your program</h3>
-	<p>{'x0':0, 'x1':0, 'x2':0, 'x3':0, 'x4':0, 'x5':0, 'x6':0, 'x7':0, 'x8':0, 'x9':0, 'sp':0}</p>
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-			{% for msg in messages %}
-				<p>{{msg}}</p>
-			{% endfor %}
-		{% endif %}
-	{% endwith %}
-	<form action="{{ url_for('sim') }}" method='post'>
-		<textarea cols="60" rows="30" name="input">{{ oldcode }}</textarea>
-		<input type="submit" name="assemble" value="assemble">
-		<input type="submit" name="reset" value="reset">
-	</form>
+		<head>
+			<link rel="stylesheet" href="static/styles.css">
+		</head>
+		<title>
+			armsim
+		</title>
+	<body>
+		<h1>An amatuer programmer's attempt at an armv8 simulator</h1>
+		<h3>The first dict shows the original values, the second one shows the values after running your program</h3>
+		<p>{'x0':0, 'x1':0, 'x2':0, 'x3':0, 'x4':0, 'x5':0, 'x6':0, 'x7':0, 'x8':0, 'x9':0, 'sp':0}</p>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for msg in messages %}
+					<p>{{msg}}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<form action="{{ url_for('sim') }}" method='post'>
+			<textarea cols="60" rows="30" name="input">{{ oldcode }}</textarea>
+			<input type="submit" name="assemble" value="assemble">
+			<input type="submit" name="reset" value="reset">
+		</form>
+	</body>
 </html>

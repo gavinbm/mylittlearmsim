@@ -1,10 +1,9 @@
 from flask import Flask, flash, redirect, url_for, render_template, request, session
 from reg import *
-#from main import *
 
 app = Flask(__name__, template_folder='templates')
 app.static_folder = 'static'
-app.secret_key = "howdy"
+app.secret_key = "armsimweb"
 
 @app.route("/", methods=["GET", "POST"])
 def sim():
