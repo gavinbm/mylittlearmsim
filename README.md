@@ -2,8 +2,8 @@
 a webified version of an armv8 simulator I'm working on.
 
 A class on machine organization I took last semester used an armv8 simulator to grade our code for quizzes
-and I thought it was so cool that I wanted to make my own in hopes that it would improve my understanding of
-how programming languages and computers work. I think it's done that but only time will tell.
+and I thought it was cool so I decided to give it a shot. It's not the most efficient or robust system but
+it's been a fun way to try my hand at writing an "interpreter."
 
 Completed features:
  - arithmetic (add, sub, mul, no div)
