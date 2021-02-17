@@ -10,15 +10,19 @@ Reg = {"x0":0,"x1":0,
 Flags = {"eq":False,
          "gt":False,
          "lt":False,
-         "ne":False}
+         "ne":False,
+         "ge":False,
+         "le":False}
 
 # Dict to hold all labels and their corresponding line numbers
 Labels = {}
 
+regex = "!#$%^&*(){}\|/?><,.;'"
+
 ''' Move Instruction '''
 def mov(dest, data):
     dest = dest.replace(" ", "").replace(",", "")
-    data = data.replace(" ", "").replace(",", "")
+    data = data.replace(" ", "").replace(",", "").replace("#", "")
     if "x" in data:
         Reg[dest] = Reg[data]
     elif "x" not in data:
@@ -42,6 +46,8 @@ def cmp(op1, op2):
     Flags["lt"] = x < y
     Flags["gt"] = x > y
     Flags["ne"] = x != y
+    Flags["ge"] = x >= y
+    Flags["le"] = x <= y
 
 ''' Arithmetic Instructions '''
 def add(dest, op1, op2):
@@ -85,13 +91,13 @@ def sub(dest, op1, op2):
 
 ''' Parsing '''
 def parse(line):
+    for char in line:
+        if char in regex:
+            line = line.replace(char, "")
     parsed = [x for x in line.split(" ") if x != ""]
     for i in range(0, len(parsed)):
-        # comment handling
         if "@" in parsed[i]:
             parsed[i] = ""
-        else:
-            parsed[i] = parsed[i].replace(" ", "").replace(",", "").replace("#", "")
     return parsed
 
 ''' Get Labels '''
@@ -99,4 +105,11 @@ def getLabels(inputFile):
     for k in range(0, len(inputFile)):
         tmp = parse(inputFile[k])
         if ":" in tmp[0]:
-            Labels[tmp[0][:-1]] = k
+            Labels[tmp[0].replace(":", "")] = k
+
+''' Format Registers for Site '''
+def beautify(regDict):
+    res = ""
+    for register in regDict:
+        res += register + ": " + str(regDict[register]) + " "
+    return res
