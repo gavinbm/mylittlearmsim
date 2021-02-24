@@ -11,7 +11,7 @@ i = 0
 while i < len(fin):
     parsed = parse(fin[i])
     ins = parsed[0]
-    #print(parsed)
+    print(hashIns(ins))
     print(Labels)
     # handle moving values
     if "mov" in ins:

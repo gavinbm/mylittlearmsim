@@ -17,7 +17,7 @@ Flags = {"eq":False,
 # Dict to hold all labels and their corresponding line numbers
 Labels = {}
 
-'''basic regex for removing non-essential characters from each line
+'''basic regex for removing non-essential characters from each line.
    removes commas and # so instructions can be passed into
    the appropriate functions
 '''
@@ -25,8 +25,6 @@ regex = ",#"
 
 ''' Move Instruction '''
 def mov(dest, data):
-    dest = dest.replace(" ", "").replace(",", "")
-    data = data.replace(" ", "").replace(",", "").replace("#", "")
     if "x" in data:
         Reg[dest] = Reg[data]
     elif "x" not in data:
@@ -55,9 +53,9 @@ def cmp(op1, op2):
 
 ''' Arithmetic Instructions '''
 def add(dest, op1, op2):
-    dest = dest.replace(" ", "").replace(",", "")
-    x = op1.replace(" ", "").replace(",", "")
-    y = op2.replace(" ", "").replace(",", "")
+    dest = dest
+    x = op1
+    y = op2
     if dest in Reg:
         if op1 in Reg:
             x = Reg[op1]
@@ -68,9 +66,9 @@ def add(dest, op1, op2):
         print("invalid dest")
 
 def mul(dest, op1, op2):
-    dest = dest.replace(" ", "").replace(",", "")
-    x = op1.replace(" ", "").replace(",", "")
-    y = op2.replace(" ", "").replace(",", "")
+    dest = dest
+    x = op1
+    y = op2
     if dest in Reg:
         if op1 in Reg:
             x = Reg[op1]
@@ -81,9 +79,9 @@ def mul(dest, op1, op2):
         print("invalid dest")
 
 def sub(dest, op1, op2):
-    dest = dest.replace(" ", "").replace(",", "")
-    x = op1.replace(" ", "").replace(",", "")
-    y = op2.replace(" ", "").replace(",", "")
+    dest = dest
+    x = op1
+    y = op2
     if dest in Reg:
         if op1 in Reg:
             x = Reg[op1]
@@ -98,10 +96,7 @@ def parse(line):
     for char in line:
         if char in regex:
             line = line.replace(char, "")
-    parsed = [x for x in line.split(" ") if x != ""]
-    for i in range(0, len(parsed)):
-        if "@" in parsed[i]:
-            parsed[i] = ""
+    parsed = [x for x in line.split(" ") if x != "" and "@" not in x]
     return parsed
 
 ''' Get Labels '''
@@ -110,6 +105,11 @@ def getLabels(inputFile):
         tmp = parse(inputFile[k])
         if ":" in tmp[0]:
             Labels[tmp[0].replace(":", "")] = k
+
+''' Reset register values to 0 '''
+def resetReg(registers):
+    for key in registers:
+        registers[key] = 0
 
 ''' Format Registers for Site '''
 def beautify(regDict):

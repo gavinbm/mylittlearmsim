@@ -13,17 +13,17 @@ def sim():
             if request.form["assemble"] == "assemble":
                 oldcode = request.form["input"]
                 fin = oldcode.strip("\n").splitlines()
-                # Storing all labels and line numbers in input.txt
+                # Storing all labels and line numbers in input
                 getLabels(fin)
 
                 # counter to stop infinite loops
                 prog_stop = 0
-                # iterate, translate, and execute each line of code
-                # from input
+                # iterate, translate, and execute each line of input
                 i = 0
                 while i < len(fin):
                     prog_stop += 1
-                    if prog_stop > 200:
+                    if prog_stop > 500:
+                        resetReg(Reg)
                         flash("you've created an infinite loop! D:")
                         return render_template("home.html", oldcode=oldcode)
                     parsed = parse(fin[i])
@@ -78,9 +78,8 @@ def sim():
                 return render_template("home.html", oldcode=oldcode)
         # reset the reg values and reload the page
         elif request.form["reset"] == "reset":
-            for key in Reg:
-                Reg[key] = 0
-                redirect(url_for("sim"))
+            resetReg(Reg)
+            redirect(url_for("sim"))
 
     return render_template("home.html")
 
