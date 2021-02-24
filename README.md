@@ -7,7 +7,7 @@ it's been a fun way to try my hand at writing an "interpreter."
 Completed features:
  - arithmetic (add, sub, mul, no div)
  - mov
- - labels, cmp, and branching (b, cbz, cbnz, b.gt, b.lt, b.eq, b.ge, b.le)
+ - labels, cmp, and branching (cbz/cbnz still work in progress, b, b.gt, b.lt, b.eq, b.ge, b.le) 
 
 Future features (hopefully):
  - str, ldr, and working stack and heap
