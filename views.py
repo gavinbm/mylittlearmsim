@@ -60,7 +60,7 @@ def sim():
                             if "b." in ins:
                                 flagCode = parsed[0][2:4]
                                 if Flags[flagCode]:
-                                    i = Labels[parsed[1].replace(":", "")]
+                                    i = Labels[parsed[1]]
                             else:
                                 i = Labels[parsed[1].replace(":", "")]
                     # handle storing to stack

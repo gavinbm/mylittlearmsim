@@ -17,7 +17,11 @@ Flags = {"eq":False,
 # Dict to hold all labels and their corresponding line numbers
 Labels = {}
 
-regex = "!#$%^&*(){}\|/?><,.;'"
+'''basic regex for removing non-essential characters from each line
+   removes commas and # so instructions can be passed into
+   the appropriate functions
+'''
+regex = ",#"
 
 ''' Move Instruction '''
 def mov(dest, data):
