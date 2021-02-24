@@ -15,10 +15,17 @@ def sim():
                 fin = oldcode.strip("\n").splitlines()
                 # Storing all labels and line numbers in input.txt
                 getLabels(fin)
+
+                # counter to stop infinite loops
+                prog_stop = 0
                 # iterate, translate, and execute each line of code
                 # from input
                 i = 0
                 while i < len(fin):
+                    prog_stop += 1
+                    if prog_stop > 200:
+                        flash("you've created an infinite loop! D:")
+                        return render_template("home.html", oldcode=oldcode)
                     parsed = parse(fin[i])
                     ins = parsed[0]
                     # handle moving values
@@ -78,4 +85,4 @@ def sim():
     return render_template("home.html")
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(host='0.0.0.0')
