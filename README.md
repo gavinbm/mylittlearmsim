@@ -1,5 +1,4 @@
-# armsimweb
-a webified version of an armv8 simulator I'm working on.
+# lil armsim
 
 A class on machine organization I took last semester used an armv8 simulator to grade our code for quizzes
 and I thought it was cool so I decided to give it a shot. It's not the most efficient or robust system but
