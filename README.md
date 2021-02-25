@@ -15,6 +15,7 @@ Completed features:
 Sample Program:
 This shows some of every complete feature listed above.
 Finds the x0th fibonacci number and moves it into x0
+''' assembly
 main:
     mov x0, 10
     mov x1, #1
@@ -32,7 +33,7 @@ main:
         b START
     END:
         mov x0, x4
- 
+ '''
 Future features (hopefully):
  - str, ldr, svc, and working stack and heap
  - adds, subs, and (bitwise) instructions
