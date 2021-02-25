@@ -10,9 +10,10 @@ NOTE: The local testing folder only exists for me to run the simulator in a term
 Completed features:
  - arithmetic (add, sub, mul, no div)
  - mov
- - labels, cmp, and branching (cbz/cbnz still work in progress, b, b.gt, b.lt, b.eq, b.ge, b.le) 
+ - labels, cmp, and branching (b, b.gt, b.lt, b.eq, b.ge, b.le) (*cbz/cbnz still WiP)
 
 Future features (hopefully):
- - str, ldr, and working stack and heap
+ - str, ldr, svc, and working stack and heap
  - printing and handling strings
+ - animated visual for stack changes
  - some css to make it less ugly
