@@ -14,6 +14,7 @@ Completed features:
 
 Future features (hopefully):
  - str, ldr, svc, and working stack and heap
+ - adds, subs, and (bitwise) instructions
  - printing and handling strings
  - animated visual for stack changes
  - some css to make it less ugly
