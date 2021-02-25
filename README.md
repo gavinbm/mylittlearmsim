@@ -1,5 +1,7 @@
 # lil armsim
 
+This is officially LIVE at https://mylittlearmsim.com/
+
 A class on machine organization I took last semester used an armv8 simulator to grade our code for quizzes
 and I thought it was cool so I decided to give it a shot. It's not the most efficient or robust system but
 it's been a fun way to try my hand at writing an "interpreter."
@@ -11,6 +13,7 @@ Completed features:
  - arithmetic (add, sub, mul, no div)
  - mov
  - labels, cmp, and branching (b, b.gt, b.lt, b.eq, b.ge, b.le) (*cbz/cbnz still WiP)
+ - comments get removed and don't mess up code execution
 
 Sample Program:
 This shows some of every complete feature listed above.
