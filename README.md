@@ -12,6 +12,27 @@ Completed features:
  - mov
  - labels, cmp, and branching (b, b.gt, b.lt, b.eq, b.ge, b.le) (*cbz/cbnz still WiP)
 
+Sample Program:
+This shows some of every complete feature listed above.
+Finds the x0th fibonacci number and moves it into x0
+main:
+    mov x0, 10
+    mov x1, #1
+    mov x2, #1
+    mov x3, #0
+    START:
+        cmp x0, x1
+        b.gt LOOP
+        b.eq END
+    LOOP:
+        add x4, x2, x3
+        mov x3, x2
+        mov x2, x4
+        add x1, x1, #1
+        b START
+    END:
+        mov x0, x4
+ 
 Future features (hopefully):
  - str, ldr, svc, and working stack and heap
  - adds, subs, and (bitwise) instructions
