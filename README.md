@@ -12,7 +12,7 @@ NOTE: The local testing folder only exists for me to run the simulator in a term
 Completed features:
  - arithmetic (add, sub, mul, no div)
  - mov
- - labels, cmp, and branching (b, b.gt, b.lt, b.eq, b.ge, b.le) (*cbz/cbnz still WiP)
+ - labels, cmp, and branching (b, b.gt, b.lt, b.eq, b.ge, b.le) (*cbz/cbnz and bl still WiP)
  - comments get removed and don't mess up code execution
 
 Sample Program:
