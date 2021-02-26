@@ -16,9 +16,8 @@ Completed features:
  - comments get removed and don't mess up code execution
 
 Sample Program:
-This shows some of every complete feature listed above.
-Finds the x0th fibonacci number and moves it into x0
-
+This will show most of the features that are completed thus far.
+It's a program that finds the x0th fibonacci number (edit line 2 to change which one) iteratively
 ```assembly
 main:
       mov x0, 10
@@ -44,6 +43,7 @@ Future features (hopefully):
  - adds, subs, and (bitwise) instructions
  - printing and handling strings
  - animated visual for stack changes
+ - recursion
  - some css to make it less ugly
 
 # Making Your Own
