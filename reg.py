@@ -95,6 +95,9 @@ def sub(dest, op1, op2):
 asm = {"mov":mov, "cmp":cmp, "add":add, "sub":sub, "mul":mul}
 
 ''' Parsing '''
+# takes in a string (line) removes non-alphanumeric chars and puts valid strings
+# into a list. first entry of list will be the instruction, the others will be
+# the corresponding arguments
 def parse(line):
     for char in line:
         if char in regex:
@@ -103,6 +106,8 @@ def parse(line):
     return parsed
 
 ''' Get Labels '''
+# fills Labels dict with every label in the user input, labels are keys, line
+# numbers are values
 def getLabels(inputFile):
     for k in range(0, len(inputFile)):
         tmp = parse(inputFile[k])
