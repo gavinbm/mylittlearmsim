@@ -4,7 +4,7 @@ Reg = {"x0":0,"x1":0,
        "x4":0,"x5":0,
        "x6":0,"x7":0,
        "x8":0,"x9":0,
-       "sp":0}
+       "lr":0,"sp":0}
 
 # Dict to hold Flags that are used for cmp and branching
 Flags = {"eq":False,

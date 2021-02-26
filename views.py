@@ -55,21 +55,20 @@ def sim():
                         op1 = parsed[2]
                         cmp(dest, op1)
                     # handle branching
-                    elif "b" in ins:
-                        if "cbz" in ins or "cbnz" in ins:
-                            dest = parsed[1]
-                            cmp(dest, "x8")
-                            if "cbz" in ins and Flags["eq"] == True:
-                                i = k
-                            elif "cbnz" in ins and Flags["eq"] == False:
-                                i = k
+                    if "b" in ins:
+                        if "cbz" in ins:
+                            if Reg[parsed[1]] == 0:
+                                i = Labels[parsed[2]]
+                        elif "cbnz" in ins:
+                            if Reg[parsed[1]] != 0:
+                                i = Labels[parsed[2]]
                         else:
                             if "b." in ins:
                                 flagCode = parsed[0][2:4]
                                 if Flags[flagCode]:
                                     i = Labels[parsed[1]]
                             else:
-                                i = Labels[parsed[1].replace(":", "")]
+                                i = Labels[parsed[1]]
                     # handle storing to stack
 
                     # iteration
