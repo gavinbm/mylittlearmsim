@@ -29,6 +29,10 @@ def sim():
                         session.pop('_flashes', None)
                         flash("you've created an infinite loop! D:")
                         return render_template("home.html", oldcode=oldcode)
+                    # if line is empty, increment i and skip it
+                    if fin[i] == "":
+                        i += 1
+                        continue
                     # parse the line into a list of strings
                     parsed = parse(fin[i])
                     # first entry of parsed will be arm instruction

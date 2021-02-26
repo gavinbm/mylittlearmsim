@@ -111,6 +111,8 @@ def parse(line):
 def getLabels(inputFile):
     for k in range(0, len(inputFile)):
         tmp = parse(inputFile[k])
+        if tmp == []:
+            continue
         if ":" in tmp[0]:
             Labels[tmp[0].replace(":", "")] = k
 
