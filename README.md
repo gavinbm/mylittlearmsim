@@ -45,3 +45,11 @@ Future features (hopefully):
  - printing and handling strings
  - animated visual for stack changes
  - some css to make it less ugly
+
+# Making Your Own
+I made this using flask, reg.py holds all the ARM-esque logic like registers, labels, functions, etc.
+views.py has one view in it, sim, which gets code from the textarea in templates/home.html and uses
+the parsing function from reg.py to parse the code and call the right functions from reg.py
+
+The site is hosted on a Linode server running Ubuntu 20.04 LTS and I'm using Nginx and uWSGI to actually
+get HTTP requests to the app. Basic tutorial on setting that up [here](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04)
