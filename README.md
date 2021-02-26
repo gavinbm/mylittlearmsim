@@ -12,12 +12,12 @@ NOTE: The local testing folder only exists for me to run the simulator in a term
 Completed features:
  - arithmetic (add, sub, mul, no div)
  - mov
- - labels, cmp, and branching (cbz, cbnz, b, b.gt, b.lt, b.eq, b.ge, b.le) (bl still WiP)
+ - labels, cmp, and branching (cbz, cbnz, bl, b, b.gt, b.lt, b.eq, b.ge, b.le)
  - comments get removed and don't mess up code execution
 
-Sample Program:
-This will show most of the features that are completed thus far.
-It's a program that finds the x0th fibonacci number (edit line 2 to change which one) iteratively
+Sample Programs:
+These will show most of the features that are completed thus far.
+1) finds the x0th fibonacci number (edit line 2 to change which one) iteratively
 ```assembly
 main:
       mov x0, 10
@@ -37,7 +37,19 @@ main:
       END:
             mov x0, x4
  ```
- 
+2) display of how to use bl and branch with lr (conditions not supported)
+```assembly
+mov x1, 2
+.here:
+    mov x0, x1
+    bl .there
+    add x1, x1, 10
+    b .end
+.there:
+    mov x1, 5
+    b lr
+.end:
+```
 Future features (hopefully):
  - str, ldr, svc, and working stack and heap
  - adds, subs, and (bitwise) instructions

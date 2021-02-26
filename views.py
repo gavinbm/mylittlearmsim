@@ -52,16 +52,18 @@ def sim():
                             if Reg[parsed[1]] != 0:
                                 i = Labels[parsed[2]]
                         elif "bl" in ins:
-                            Reg["lr"] = i + 1
-                            k = Labels[parsed[1]]
-
+                            Reg["lr"] = i # store line number ("address") of next instruction
+                            i = Labels[parsed[1]] # branch to the label
                         else:
                             if "b." in ins:
                                 flagCode = parsed[0][2:4]
                                 if Flags[flagCode]:
                                     i = Labels[parsed[1]]
                             else:
-                                i = Labels[parsed[1]]
+                                if parsed[1].lower() == "lr": # branch to lr
+                                    i = Reg["lr"]
+                                else:
+                                    i = Labels[parsed[1]]
                     # throw error message if non-supported instruction is given
                     else:
                         flash(f"Uh Oh! Instruction on line {i + 1} isn't supported!")
