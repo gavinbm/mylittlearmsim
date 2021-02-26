@@ -36,7 +36,6 @@ def sim():
 
                     # checks instruction and passes args to appropriate function
                     # stored in the asm dict
-                    print(parsed)
                     if ":" in ins:
                         i += 1
                         continue
