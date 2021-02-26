@@ -28,33 +28,14 @@ def sim():
                         return render_template("home.html", oldcode=oldcode)
                     parsed = parse(fin[i])
                     ins = parsed[0]
-                    # handle moving values
-                    if "mov" in ins:
-                        dest = parsed[1]
-                        op1 = parsed[2]
-                        mov(dest, op1)
-                    # handle arithmetic
-                    elif "add" in ins:
-                        dest = parsed[1]
-                        op1 = parsed[2]
-                        op2 = parsed[3]
-                        add(dest, op1, op2)
-                    elif "sub" in ins:
-                        dest = parsed[1]
-                        op1 = parsed[2]
-                        op2 = parsed[3]
-                        sub(dest, op1, op2)
-                    elif "mul" in ins:
-                        dest = parsed[1]
-                        op1 = parsed[2]
-                        op2 = parsed[3]
-                        mul(dest, op1, op2)
-                    # handle comparisons
-                    elif "cmp" in ins:
-                        dest = parsed[1]
-                        op1 = parsed[2]
-                        cmp(dest, op1)
-                    # handle branching
+
+                    # checks instruction and passes args to appropriate function
+                    # stored in the asm dict
+                    if ins in asm and len(parsed) > 3:
+                        asm[ins](parsed[1], parsed[2], parsed[3])
+                    elif ins in asm and len(parsed) <= 3:
+                        asm[ins](parsed[1], parsed[2])
+
                     if "b" in ins:
                         if "cbz" in ins:
                             if Reg[parsed[1]] == 0:
@@ -62,6 +43,10 @@ def sim():
                         elif "cbnz" in ins:
                             if Reg[parsed[1]] != 0:
                                 i = Labels[parsed[2]]
+                        elif "bl" in ins:
+                            Reg["lr"] = i + 1
+                            k = Labels[parsed[1]]
+
                         else:
                             if "b." in ins:
                                 flagCode = parsed[0][2:4]

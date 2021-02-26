@@ -91,6 +91,9 @@ def sub(dest, op1, op2):
     else:
         print("invalid dest")
 
+# dict to store all function calls and tie them to appropriate user input
+asm = {"mov":mov, "cmp":cmp, "add":add, "sub":sub, "mul":mul}
+
 ''' Parsing '''
 def parse(line):
     for char in line:
