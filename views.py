@@ -33,9 +33,12 @@ def sim():
                     if fin[i] == "":
                         i += 1
                         continue
-                    # parse the line into a list of strings
+                    # parse the line into a list of string lists where
+                    # first element is the instruction and the others are the
+                    # corresponding arguments/operands for the instruction
                     parsed = parse(fin[i])
-                    # first entry of parsed will be arm instruction
+                    
+                    # storing instruction into ins var for easier comparisons/use
                     ins = parsed[0]
 
                     # checks instruction and passes args to appropriate function
