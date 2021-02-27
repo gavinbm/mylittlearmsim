@@ -59,7 +59,7 @@ Future features (hopefully):
  - some css to make it less ugly
 
 # Making Your Own
-I made this using flask, reg.py holds all the ARM-esque logic like registers, labels, functions, etc.
+I made this using flask and python 3.8.6, reg.py holds all the ARM-esque logic like registers, labels, functions, etc.
 views.py has one view in it, sim, which gets code from the textarea in templates/home.html and uses
 the parsing function from reg.py to parse the code and call the right functions from reg.py
 
