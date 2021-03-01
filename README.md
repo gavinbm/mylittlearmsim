@@ -13,7 +13,7 @@ Completed features:
  - arithmetic (add, sub, mul, no div)
  - mov
  - labels, cmp, and branching (cbz, cbnz, bl, b, b.gt, b.lt, b.eq, b.ge, b.le)
- - comments get removed and don't mess up code execution
+ - comments (single-line, denoted by "@") get removed and don't mess up code execution
 
 Sample Programs:
 These will show most of the features that are completed thus far.
