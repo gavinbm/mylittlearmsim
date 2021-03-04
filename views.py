@@ -1,4 +1,3 @@
-from flask import Flask, flash, redirect, url_for, render_template, request, session
 from reg import *
 
 app = Flask(__name__, template_folder='templates')
@@ -37,7 +36,7 @@ def sim():
                     # first element is the instruction and the others are the
                     # corresponding arguments/operands for the instruction
                     parsed = parse(fin[i])
-                    
+
                     # storing instruction into ins var for easier comparisons/use
                     ins = parsed[0]
 
@@ -77,8 +76,12 @@ def sim():
                         render_template("home.html", oldcode=oldcode)
                     # iteration
                     i += 1
-                flash(beautify(Reg))
-                return render_template("home.html", oldcode=oldcode)
+                if Reg["sp"] != []:
+                    flash("The Horror! You've forgotten to shrink the stack!")
+                    return render_template("home.html", oldcode=oldcode)
+                else:
+                    flash(beautify(Reg))
+                    return render_template("home.html", oldcode=oldcode)
         # reset the reg values and reload the page
         elif request.form["reset"] == "reset":
             resetReg(Reg)
