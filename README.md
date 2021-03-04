@@ -13,10 +13,12 @@ Completed features:
  - arithmetic (add, sub, mul, no div)
  - mov
  - labels, cmp, and branching (cbz, cbnz, bl, b, b.gt, b.lt, b.eq, b.ge, b.le)
+ - grow, shrink, str, and ldr the stack pointer (str/ldr don't work with other registers, just sp)
  - comments (single-line, denoted by "@") get removed and don't mess up code execution
 
 Sample Programs:
 These will show most of the features that are completed thus far.
+
 1) finds the x0th fibonacci number (edit line 2 to change which one) iteratively
 ```assembly
 main:
@@ -37,7 +39,7 @@ main:
       END:
             mov x0, x4
  ```
-2) display of how to use bl and branch with lr (conditions not supported)
+2) example of how to use bl and branch with lr (conditions not supported)
 ```assembly
 mov x1, 2
 .here:
@@ -50,8 +52,17 @@ mov x1, 2
     b lr
 .end:
 ```
+3) example of using the stack to str/ldr values
+```assembly
+sub sp, sp, 16
+mov x1, 1
+str x1, [sp, 8]
+ldr x0, [sp, 8]
+add sp, sp, 16
+```
 Future features (hopefully):
- - str, ldr, svc, and working stack and heap
+ - str/ldr for registers other than sp
+ - svc, more robust stack, and heap limits
  - adds, subs, and (bitwise) instructions
  - printing and handling strings
  - animated visual for stack changes
