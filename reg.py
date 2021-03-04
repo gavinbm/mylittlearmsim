@@ -97,6 +97,13 @@ def add(dest, op1, op2):
     x = op1
     y = op2
     if dest in Reg:
+        if dest == "sp":
+            op2 = int(op2)
+            if int(op2/4) != len(Reg["sp"]):
+                flash("Darn! You've got to reset the stack!")
+                return render_template("home.html")
+            else:
+                return
         if op1 in Reg:
             x = Reg[op1]
         if op2 in Reg:
@@ -104,10 +111,6 @@ def add(dest, op1, op2):
         if x == None or y == None:
             flash("Whoops! Theres an uninitialized register in an add instruction!")
             return render_template("home.html")
-        if dest == "sp":
-            for i in range(0, int(int(op2)/8)):
-                Reg["sp"].pop()
-            return
         Reg[dest] = int(x) + int(y)
     else:
         print("invalid dest")
@@ -139,10 +142,13 @@ def sub(dest, op1, op2):
     y = op2
     if dest in Reg:
         # using sub to grow the stack
-        if dest == "sp" and int(op2) % 8 == 0:
-            Reg["sp"] = [None] * int(int(op2)/8)
-        elif op2 % 8 != 0:
-            print("must be multiple of 8")
+        if dest == "sp":
+            op2 = int(op2)
+            if op2 % 4 == 0:
+                Reg["sp"] = [None] * int(op2/4)
+            else:
+                flash("Shucks! You have to grow the stack in multiples of 4!")
+                return render_template("home.html")
         else:
             if op1 in Reg:
                 x = Reg[op1]
