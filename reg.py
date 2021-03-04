@@ -103,6 +103,7 @@ def add(dest, op1, op2):
                 flash("Darn! You've got to reset the stack!")
                 return render_template("home.html")
             else:
+                Reg["sp"] = []
                 return
         if op1 in Reg:
             x = Reg[op1]
