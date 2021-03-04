@@ -107,6 +107,7 @@ def add(dest, op1, op2):
         if dest == "sp":
             for i in range(0, int(int(op2)/8)):
                 Reg["sp"].pop()
+            return
         Reg[dest] = int(x) + int(y)
     else:
         print("invalid dest")
