@@ -39,7 +39,7 @@ def mov(dest, data):
 # checks if user is reaching out of range of the stack
 # Throws error if the user goes past the stack
 def store(src, sp, placeInStack):
-    placeInStack = int(int(placeInStack)/8)
+    placeInStack = int(int(placeInStack)/4)
 
     if placeInStack >= len(Reg["sp"]):
         flash("Oh no! You've reached past the stack pointer!")
@@ -54,7 +54,7 @@ def store(src, sp, placeInStack):
 # loads desired value from the stack list
 # checks for invalid inputs/calls and throws errors accordingly
 def ldr(dest, src, placeInStack):
-    placeInStack = int(int(placeInStack)/8)
+    placeInStack = int(int(placeInStack)/4)
 
     if dest in Reg and placeInStack < len(Reg["sp"]):
         Reg[dest] = Reg["sp"][placeInStack]
