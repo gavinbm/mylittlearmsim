@@ -9,6 +9,9 @@ it's been a fun way to try my hand at writing an "interpreter."
 NOTE: The local testing folder only exists for me to run the simulator in a terminal to make print statements
       easier to read and so I don't have to start a flask server everytime I want to test something
 
+NOTE: The stack is a bit buggy as of right now, use sub to grow it, shrink it by adding
+      the same number you subbed by (example below) and make sure those are all multiples of 4
+
 Completed features:
  - arithmetic (add, sub, mul, no div)
  - mov
