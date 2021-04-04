@@ -19,7 +19,8 @@ def sim():
                 prog_stop = 0
                 
                 # iterate, translate, and execute each line of input
-                for i in range(0, len(fin)):
+                i = 0
+                while i < len(fin):
                     prog_stop += 1
                     if prog_stop > 500:
                         # set registers back to 0, clear flash, give error message
