@@ -3,32 +3,103 @@
 			<link rel="stylesheet" href="static/styles.css">
 		</head>
 		<title>
-			Itty Bitty ARM Committee
+			Simple ARM Simulator
 		</title>
 	<body>
-		<h1>An amatuer programmer's attempt at an armv8 simulator</h1>
+		<h1>An undergrad's attempt at a simple ARMv8 interpreter/simulator</h1>
 		<p>
-			The first dict shows the original values, the second one shows the values after running your program
+			Welcome to my humble site! Check the docs down below for sample programs and features/updates :D
 		</p>
 		<p>
-			This isn't a complete sim for armv8 asm, it's only meant for writing
-			very basic asm as an easy introduction to the language
+			This isn't meant for very robust programs, it's meant to give a comfy environment for beginners
+			to tinker with assembly language. Have fun!
 		</p>
-		<p>Before:   x0: None x1: None x2: None x3: None x4: None x5: None x6: None x7: None x8: None x9: None sp: [ ]</p>
-		{% with messages = get_flashed_messages() %}
-			{% if messages %}
-				{% for msg in messages %}
-					<p>After:   {{msg}}</p>
-				{% endfor %}
-			{% endif %}
-		{% endwith %}
-		<form action="{{ url_for('sim') }}" method='post'>
-			<textarea cols="60" rows="30" name="input">{{ oldcode }}</textarea>
-			<input type="submit" name="assemble" value="assemble">
-			<input type="submit" name="reset" value="reset">
-		</form>
-		<div style="height: 400px; width: 600px; overflow: scroll;">
-			<script src="https://gist.github.com/gavinbm/685ea220b8bbe9340ffc32da4e5e3fcc.js"></script>
+		<div id="wrapper">
+			<div id="editor">
+				<form action="{{ url_for('sim') }}" method='post'>
+					<textarea cols="60" rows="30" name="input">{{ oldcode }}</textarea>
+					<input type="submit" name="assemble" value="assemble">
+					<input type="submit" name="reset" value="reset">
+				</form>
+			</div>
+			<div id="reg_before">
+				<table>
+					<tr>
+						<th>Before</th>
+					<tr>
+					<tr>
+						<th>Register</th>
+						<th>Value</th>
+					<tr>
+						<td>x0</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x1</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x2</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x3</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x4</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x5</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x6</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x7</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x8</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>x9</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>lr</td>
+						<td>None</td>
+					</tr>
+					<tr>
+						<td>sp</td>
+						<td>[ ]</td>
+					</tr>
+				</table>
+			</div>
+			<div id="reg_after">
+				<table>
+					<tr>
+						<th>After</th>
+					</tr>
+					<tr>
+						<th>Register</th>
+						<th>Value</th>
+					</tr>
+					{% for reg in Reg %}
+					<tr>
+						<td>{{ reg }}</td>
+						<td>{{ Reg[reg] }}</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div id="readme">
+				<script src="https://gist.github.com/gavinbm/685ea220b8bbe9340ffc32da4e5e3fcc.js"></script>
+			</div>
 		</div>
 	</body>
 </html>

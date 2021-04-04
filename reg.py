@@ -192,10 +192,3 @@ def resetReg(registers):
     for key in registers:
         registers[key] = None
     registers["sp"] = []
-
-''' Format Registers for Site '''
-def beautify(regDict):
-    res = ""
-    for register in regDict:
-        res += register + ": " + str(regDict[register]) + " "
-    return res

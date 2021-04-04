@@ -17,9 +17,9 @@ def sim():
 
                 # counter to stop infinite loops
                 prog_stop = 0
+                
                 # iterate, translate, and execute each line of input
-                i = 0
-                while i < len(fin):
+                for i in range(0, len(fin)):
                     prog_stop += 1
                     if prog_stop > 500:
                         # set registers back to 0, clear flash, give error message
@@ -27,7 +27,7 @@ def sim():
                         resetReg(Reg)
                         session.pop('_flashes', None)
                         flash("you've created an infinite loop! D:")
-                        return render_template("home.html", oldcode=oldcode)
+                        return render_template("home.html", Reg=Reg, oldcode=oldcode)
                     # if line is empty, increment i and skip it
                     if fin[i] == "":
                         i += 1
@@ -73,22 +73,22 @@ def sim():
                     # throw error message if non-supported instruction is given
                     else:
                         flash(f"Uh Oh! Instruction on line {i + 1} isn't supported!")
-                        render_template("home.html", oldcode=oldcode)
+                        render_template("home.html", Reg=Reg, oldcode=oldcode)
                     # iteration
                     i += 1
                 if Reg["sp"] != []:
                     flash("The Horror! You've forgotten to shrink the stack!")
-                    return render_template("home.html", oldcode=oldcode)
+                    return render_template("home.html", Reg=Reg, oldcode=oldcode)
                 else:
-                    flash(beautify(Reg))
-                    return render_template("home.html", oldcode=oldcode)
+                    #flash(beautify(Reg))
+                    return render_template("home.html", Reg=Reg, oldcode=oldcode)
         # reset the reg values and reload the page
         elif request.form["reset"] == "reset":
             resetReg(Reg)
             session.pop('_flashes', None)
             redirect(url_for("sim"))
 
-    return render_template("home.html")
+    return render_template("home.html", Reg=Reg)
 
 if __name__ == "__main__":
     app.jinja_env.auto_reload = True

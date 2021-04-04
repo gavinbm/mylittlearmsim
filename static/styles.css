@@ -10,3 +10,40 @@ h1 {
 p {
   font-family: sans-serif;
 }
+
+tr {
+  position: relative;
+}
+
+th,
+td {
+  text-align: center;
+  border: 1px solid white;
+  padding: 5px;
+}
+
+#wrapper {
+  width: 700px;
+}
+
+#editor {
+  width: 450px;
+  float: left;
+}
+
+#reg_before {
+  width: 100px;
+  float: left;
+}
+
+#reg_after {
+  width: 100px;
+  float: right;
+}
+
+#readme {
+  height: 400px;
+  width: 600px;
+  float: left;
+  overflow: scroll;
+}

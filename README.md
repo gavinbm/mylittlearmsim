@@ -1,4 +1,4 @@
-# lil armsim
+# Simple ARMv8 Interpreter/Simulator
 
 This is officially LIVE at https://mylittlearmsim.com/
 
@@ -6,20 +6,30 @@ A class on machine organization I took last semester used an armv8 simulator to 
 and I thought it was cool so I decided to give it a shot. It's not the most efficient or robust system but
 it's been a fun way to try my hand at writing an "interpreter."
 
-NOTE: The local testing folder only exists for me to run the simulator in a terminal to make print statements
-      easier to read and so I don't have to start a flask server everytime I want to test something
-
 NOTE: The stack is a bit buggy as of right now, use sub to grow it, shrink it by adding
       the same number you subbed by (example below) and make sure those are all multiples of 4
 
-Completed features:
- - arithmetic (add, sub, mul, no div)
- - mov
- - labels, cmp, and branching (cbz, cbnz, bl, b, b.gt, b.lt, b.eq, b.ge, b.le)
- - grow, shrink, str, and ldr the stack pointer (str/ldr don't work with other registers, just sp)
- - comments (single-line, denoted by "@") get removed and don't mess up code execution
+NOTE: The local testing folder contains a version of this app that runs in a terminal but will
+      soon be used to contain unit tests for the functions
 
-Sample Programs:
+# Features, current and future:
+
+Completed features:
+  - arithmetic (add, sub, mul, no div)
+  - mov
+  - labels, cmp, and branching (cbz, cbnz, bl, b, b.gt, b.lt, b.eq, b.ge, b.le)
+  - grow, shrink, str, and ldr the stack pointer (str/ldr don't work with other registers, just sp)
+  - comments (single-line, denoted by "@") get removed and don't mess up code execution
+
+Future features (hopefully):
+  - str/ldr for registers other than sp
+  - svc, more robust stack, and heap limits
+  - adds, subs, and (bitwise) instructions
+  - printing and handling strings
+  - animated visual for stack changes
+  - recursion
+
+# Sample Programs:
 These will show most of the features that are completed thus far.
 
 1) finds the x0th fibonacci number (edit line 2 to change which one) iteratively
@@ -63,14 +73,6 @@ str x1, [sp, 8]
 ldr x0, [sp, 8]
 add sp, sp, 16
 ```
-Future features (hopefully):
- - str/ldr for registers other than sp
- - svc, more robust stack, and heap limits
- - adds, subs, and (bitwise) instructions
- - printing and handling strings
- - animated visual for stack changes
- - recursion
- - some css to make it less ugly
 
 # Making Your Own
 I made this using flask and python 3.8.6, reg.py holds all the ARM-esque logic like registers, labels, functions, etc.
