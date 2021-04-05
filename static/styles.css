@@ -22,10 +22,6 @@ td {
   padding: 5px;
 }
 
-textarea {
-  resize: none;
-}
-
 #wrapper {
   width: 700px;
 }
@@ -33,6 +29,12 @@ textarea {
 #editor {
   width: 450px;
   float: left;
+}
+
+#editor textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 #reg_before {
