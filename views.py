@@ -17,7 +17,7 @@ def sim():
 
                 # counter to stop infinite loops
                 prog_stop = 0
-                
+
                 # iterate, translate, and execute each line of input
                 i = 0
                 while i < len(fin):
@@ -51,6 +51,7 @@ def sim():
                     elif ins in asm and len(parsed) <= 3:
                         asm[ins](parsed[1], parsed[2])
 
+                    # handle branches
                     elif ins in "b|b.eq|b.gt|b.lt|b.le|b.ge|b.ne|cbz|cbz|bl".split("|"):
                         if "cbz" in ins:
                             if Reg[parsed[1]] == 0:

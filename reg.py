@@ -114,7 +114,7 @@ def add(dest, op1, op2):
             return render_template("home.html")
         Reg[dest] = int(x) + int(y)
     else:
-        print("invalid dest")
+        flash("Darnit! There's an invalid destination register!")
 
 # performs multiplication
 def mul(dest, op1, op2):
@@ -123,7 +123,7 @@ def mul(dest, op1, op2):
     y = op2
     if dest in Reg:
         if dest == "sp":
-            print("invalid ins")
+            flash("Oh no! You can't use mul to increment/shrink the stack!")
         else:
             if op1 in Reg:
                 x = Reg[op1]
@@ -134,7 +134,7 @@ def mul(dest, op1, op2):
                 return render_template("home.html")
             Reg[dest] = int(x) * int(y)
     else:
-        print("invalid dest")
+        flash("Darnit! There's an invalid destination register!")
 
 # performs subtraction and grows the stack
 def sub(dest, op1, op2):
@@ -160,7 +160,7 @@ def sub(dest, op1, op2):
                 return render_template("home.html")
             Reg[dest] = int(x) - int(y)
     else:
-        print("invalid dest")
+        flash("Darnit! There's an invalid destination register!")
 
 # dict to store all function calls and tie them to appropriate user input
 asm = {"mov":mov, "cmp":cmp, "add":add, "sub":sub, "mul":mul, "str":store, "ldr":ldr}

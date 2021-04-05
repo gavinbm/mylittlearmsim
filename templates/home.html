@@ -14,10 +14,19 @@
 			This isn't meant for very robust programs, it's meant to give a comfy environment for beginners
 			to tinker with assembly language. Have fun!
 		</p>
+
+		{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for msg in messages %}
+						<p>{{msg}}</p>
+					{% endfor %}
+				{% endif %}
+		{% endwith %}
+
 		<div id="wrapper">
 			<div id="editor">
 				<form action="{{ url_for('sim') }}" method='post'>
-					<textarea cols="60" rows="30" name="input">{{ oldcode }}</textarea>
+					<textarea cols="50" rows="30" name="input">{{ oldcode }}</textarea>
 					<input type="submit" name="assemble" value="assemble">
 					<input type="submit" name="reset" value="reset">
 				</form>
