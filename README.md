@@ -1,10 +1,17 @@
 # Simple ARMv8 Interpreter/Simulator
 
-This is officially LIVE at https://mylittlearmsim.com/
+This is live at https://mylittlearmsim.com/
 
 A class on machine organization I took last semester used an armv8 simulator to grade our code for quizzes
 and I thought it was cool so I decided to give it a shot. It's not the most efficient or robust system but
 it's been a fun way to try my hand at writing an "interpreter."
+
+I made this using flask and python 3.8.6, reg.py holds all the ARM-esque logic and features like registers, labels, etc.
+views.py has one view in it, sim, which gets code from the textarea in templates/home.html and uses
+the parsing function from reg.py to parse the code and call the right functions from reg.py
+
+The site is hosted on a Linode server running Ubuntu 20.04 LTS and I'm using Nginx and uWSGI to actually
+get HTTP requests to the app. Basic tutorial on setting that up [here](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04)
 
 NOTE: The stack is a bit buggy as of right now, use sub to grow it, shrink it by adding
       the same number you subbed by (example below) and make sure those are all multiples of 4
@@ -73,11 +80,3 @@ str x1, [sp, 8]
 ldr x0, [sp, 8]
 add sp, sp, 16
 ```
-
-# Making Your Own
-I made this using flask and python 3.8.6, reg.py holds all the ARM-esque logic like registers, labels, functions, etc.
-views.py has one view in it, sim, which gets code from the textarea in templates/home.html and uses
-the parsing function from reg.py to parse the code and call the right functions from reg.py
-
-The site is hosted on a Linode server running Ubuntu 20.04 LTS and I'm using Nginx and uWSGI to actually
-get HTTP requests to the app. Basic tutorial on setting that up [here](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04)
