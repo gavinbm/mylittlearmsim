@@ -37,7 +37,7 @@ Future features (hopefully):
   - recursion
 
 # Sample Programs:
-These will show most of the features that are completed thus far.
+These will show most of the features that are completed thus far. Just copy and paste them into the textarea and click assemble.
 
 1) finds the x0th fibonacci number (edit line 2 to change which one) iteratively
 ```assembly
