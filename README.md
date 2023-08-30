@@ -1,6 +1,6 @@
 # Simple ARMv8 Interpreter/Simulator
 
-This is live at https://mylittlearmsim.com/
+This used to be a live website but I took it down since I don't think I'll be coming back to this project. RIP mylittlearmsim
 
 A class on machine organization I took last semester used an armv8 simulator to grade our code for quizzes
 and I thought it was cool so I decided to give it a shot. It's not the most efficient or robust system but
